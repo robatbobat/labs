@@ -37,6 +37,25 @@ public:
                 std::cout<<'\n';
         }
 
+	void list_elements_backward()
+        {
+                if(start==null) std::cout<<"empty list";
+		list_elements_backward( &start );
+
+/*
+                for(body* idx=start; idx!=null; idx=idx->next)
+                {
+                        std::cout<<idx->element<<' ';
+                }
+                std::cout<<'\n';
+*/
+        }
+	void list_elements_backward( body** ptr)
+	{
+		if( (*ptr)->next!=null ) list_elements_backward( &(*ptr)->next );
+		std::cout<<(*ptr)->element<<' ';
+	}
+
 	void push(int value)
 	{
 		body* temp=new body;

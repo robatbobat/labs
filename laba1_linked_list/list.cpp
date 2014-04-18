@@ -29,6 +29,7 @@ int main()
 	list.delete_element(99);
 	list.delete_element(1);
 	list.list_elements();
+	list.list_elements_backward();
 
 return 0;
 }
