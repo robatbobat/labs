@@ -3,7 +3,7 @@ using namespace std;
 #include "kursa4.h"
 
 
-//смещения по списку в буффере для каждого эл-та
+//СЃРјРµС‰РµРЅРёСЏ РїРѕ СЃРїРёСЃРєСѓ РІ Р±СѓС„С„РµСЂРµ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЌР»-С‚Р°
 #define TITLE	0
 #define ISBN	1
 #define YEAR	2
@@ -11,22 +11,22 @@ using namespace std;
 #define NAME	4
 
 string value;
-std::vector<string> books; //тут храним весь список прочитанный из .csv
-std::stringstream buffer; //тут он в не отформатированном виде
+std::vector<string> books; //С‚СѓС‚ С…СЂР°РЅРёРј РІРµСЃСЊ СЃРїРёСЃРѕРє РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РёР· .csv
+std::stringstream buffer; //С‚СѓС‚ РѕРЅ РІ РЅРµ РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅРѕРј РІРёРґРµ
 std::string contents;
 
 
-//сортировка по названию книги
+//СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РЅР°Р·РІР°РЅРёСЋ РєРЅРёРіРё
 //
 void sortByTitle()
 {
-	btree<std::string> tree(&books); //инициализируем дерево
+	btree<std::string> tree(&books); //РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РґРµСЂРµРІРѕ
 	for (int idx=TITLE; idx<books.size(); idx+=5 )
-    	tree.root=tree.push( tree.root,books[idx],idx-TITLE );  //загружаем в него ключи
-	tree.listLKR(); //выводим список
+    	tree.root=tree.push( tree.root,books[idx],idx-TITLE );  //Р·Р°РіСЂСѓР¶Р°РµРј РІ РЅРµРіРѕ РєР»СЋС‡Рё
+	tree.listLKR(); //РІС‹РІРѕРґРёРј СЃРїРёСЃРѕРє
 }
 
-//сортировка по ISBN
+//СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ ISBN
 //
 
 void sortByISBN()
@@ -37,7 +37,7 @@ void sortByISBN()
 	tree.listLKR();
 }
 
-//сортировка по году издания
+//СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РіРѕРґСѓ РёР·РґР°РЅРёСЏ
 //
 
 void sortByYear()
@@ -48,7 +48,7 @@ void sortByYear()
 	tree.listLKR();
 }
 
-//сортировка по количеству страниц
+//СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ СЃС‚СЂР°РЅРёС†
 //
 
 void sortByPages()
@@ -59,7 +59,7 @@ void sortByPages()
 	tree.listLKR();
 }
 
-//сортировка по автору
+//СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р°РІС‚РѕСЂСѓ
 //
 
 void sortByAuthor()
@@ -76,14 +76,14 @@ int main()
         char	c;
 	int	i;
 
-	//загружаем записи из .csv в буффер и потом в вектор
+	//Р·Р°РіСЂСѓР¶Р°РµРј Р·Р°РїРёСЃРё РёР· .csv РІ Р±СѓС„С„РµСЂ Рё РїРѕС‚РѕРј РІ РІРµРєС‚РѕСЂ
 	std::ifstream in("primer.csv");
 	buffer << in.rdbuf();
 	contents=buffer.str();
 	for( int idx=0; idx<contents.size(); idx++ )
 	{
 	        c=contents[idx];
-		if( c==';' || c=='\n') //записи в .csv разделены знаками ; и переводом строки
+		if( c==';' || c=='\n') //Р·Р°РїРёСЃРё РІ .csv СЂР°Р·РґРµР»РµРЅС‹ Р·РЅР°РєР°РјРё ; Рё РїРµСЂРµРІРѕРґРѕРј СЃС‚СЂРѕРєРё
 		{
 			books.push_back(value);
 			value.clear();
@@ -91,7 +91,7 @@ int main()
 		else value.push_back(c);
 	}
 
-	//меню выбора вариантов отображения списка
+	//РјРµРЅСЋ РІС‹Р±РѕСЂР° РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃРїРёСЃРєР°
 	//
 	for(;;)
 	{
